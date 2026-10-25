@@ -1,0 +1,332 @@
+MASTER PROMPT — FAMILY SHIELD 🇮🇳
+
+Complete Android App + New GitHub Repository + APK
+
+Act as a senior Android engineer, Kotlin developer, UI/UX designer, software architect, QA engineer, and GitHub repository manager.
+
+Your mission is to design, develop, test, document, and prepare a complete Android application called Family Shield (कुटुंब सुरक्षा).
+
+Do not stop at a concept, prototype, or sample code. Build a real, maintainable Android project with functional call filtering, bilingual UI, persistent settings, tests, and a new GitHub repository.
+
+1. My goal
+
+My father receives customer calls even on his days off and while he is driving. I want an app that allows him to choose the family members and other trusted people whose calls he wants to receive.
+
+All other callers should be handled according to his selected settings: block them when Android permits reliable call rejection, or silence them when only silencing is supported.
+
+The app must help reduce interruptions and driving distractions without making my father miss important calls unexpectedly.
+
+2. Create a new GitHub repository
+
+Create a completely new repository for this project.
+
+Preferred repository details:
+
+- Repository name: "family-shield-android"
+- Description: "A privacy-first bilingual Marathi-English Android family call filter with trusted contacts and driving focus mode."
+- Visibility: Public, unless private is more appropriate for security.
+- Default branch: "main"
+- Language: Kotlin
+- Build system: Gradle
+- UI: Jetpack Compose and Material 3
+- Architecture: MVVM
+
+GitHub execution requirements
+
+1. Check whether GitHub tools and the required repository permissions are available.
+2. If available, create the repository under my authenticated GitHub account.
+3. Check that the repository name does not already exist.
+4. If the name exists, inspect it before deciding whether to reuse it; never overwrite or delete an existing repository without permission.
+5. Create the Android project locally or in an available coding environment.
+6. Add the actual project files, source code, resources, tests, Gradle configuration, and documentation.
+7. Initialize Git if needed, commit the working implementation, and push it to the new repository.
+8. Use meaningful commits and keep secrets, signing keys, passwords, tokens, and local machine configuration out of Git.
+9. Configure a GitHub Actions workflow to build the debug APK and run available tests.
+10. Publish the debug APK as a downloadable build artifact when CI succeeds.
+11. Create a README containing features, screenshots if available, setup instructions, permissions, limitations, and build instructions.
+12. Provide the final repository URL, default branch, latest commit, build status, and APK artifact or release link when actually available.
+
+If GitHub access or write permissions are unavailable, do not claim that the repository was created. Generate the complete project, explain the missing authorization, and give me the exact steps to create and push the repository.
+
+Do not ask me to manually create the repository if you have the required tools and authorization to create it yourself.
+
+3. Language support
+
+Support two complete languages:
+
+- English
+- Marathi (मराठी)
+
+Include a language selector during onboarding and in Settings.
+
+Translate all screens, buttons, menus, error messages, dialogs, notifications, help text, accessibility labels, and permission explanations.
+
+Use natural Marathi and Android resource-based localization. Save the language preference persistently.
+
+4. Trusted contacts
+
+Create a complete contact-management feature.
+
+Requirements:
+
+- Request contact permission only when needed.
+- Display contact names and phone numbers.
+- Let my father manually select trusted contacts.
+- Include search, select, deselect, and remove actions.
+- Support contacts with multiple phone numbers.
+- Permit manual addition of trusted phone numbers.
+- Normalize phone numbers carefully and account for Indian numbers.
+- Avoid accidentally treating different numbers as identical.
+- Save trusted contacts locally.
+- Allow contact changes without restarting the phone.
+- Never automatically trust every saved contact.
+- Provide a separate emergency-contact list.
+- Explain that trusted numbers can be edited at any time.
+
+The phone's contact list must not be uploaded to a server.
+
+5. Three main modes
+
+A. Family Only — फक्त कुटुंब
+
+- Approved contacts should ring normally.
+- Unapproved callers should be rejected when the supported Android API and granted permissions allow it.
+- If rejection is unavailable, offer a clearly labelled silence-only fallback.
+- Explain what the selected mode can and cannot do before activation.
+
+B. Driving Mode — ड्रायव्हिंग मोड
+
+- Reduce interruptions from unapproved callers.
+- Let approved family members reach my father.
+- Provide a large manual toggle that is easy to use before starting a journey.
+- Optionally support a user-configured car Bluetooth connection trigger, if reliable on the target Android version.
+- Never require screen interaction while the vehicle is moving.
+- Do not automatically answer calls.
+- Provide a clear exit procedure.
+
+C. Normal Mode — सामान्य मोड
+
+- Restore ordinary call behavior.
+- Disable Family Only filtering and Driving Mode filtering.
+- Do not accidentally leave the phone in a restricted mode after the user disables it.
+
+Clearly distinguish blocking, rejecting, silencing, and suppressing notifications.
+
+6. My additional recommended features
+
+Implement these where technically appropriate.
+
+Day Off Mode — सुट्टी मोड
+
+A simple mode for days when my father does not want customer calls.
+
+- Family calls remain allowed.
+- Other callers follow the configured policy.
+- Optional scheduled activation and deactivation.
+- A clear active-until time.
+- Manual override at any time.
+
+Repeat Caller Protection
+
+Offer an optional setting that allows a second call from the same unknown number within a configurable short interval to ring or bypass silencing, where Android APIs permit it.
+
+Explain that this may also allow repeat customer calls. Keep it disabled by default until configured.
+
+Trusted Contact Exceptions
+
+Allow the user to mark selected trusted contacts as:
+
+- Family
+- Emergency
+- Other trusted contact
+
+These categories should be configurable rather than fixed.
+
+Smart Mode Status
+
+The home screen should show:
+
+- Current mode
+- Whether call filtering is active
+- Which permissions are missing
+- Whether actual blocking or only silencing is available
+- When a scheduled mode will end
+
+Never display a misleading “blocked” status when calls are merely silenced.
+
+Privacy-First Call History
+
+Optionally keep a minimal, local history of filtering decisions where supported.
+
+- Store as little data as possible.
+- Provide a delete-history option.
+- Set a short configurable retention period.
+- Do not record call audio.
+- Do not upload customer phone numbers.
+- Do not collect analytics by default.
+
+Quick Controls
+
+Provide a large, accessible home-screen control and, where supported, a Quick Settings tile or notification action to switch modes.
+
+Do not create controls that require unsafe interaction while driving.
+
+Emergency Override
+
+- Make it easy to disable filtering.
+- Explain that blocking unknown callers could prevent important calls from reaching the phone.
+- Provide configurable emergency exceptions.
+- Do not promise that emergency services will always bypass the filter.
+
+7. Android implementation requirements
+
+Use native Android development with Kotlin, Jetpack Compose, Material 3, and a maintainable MVVM architecture.
+
+Investigate and implement the appropriate supported Android APIs, including CallScreeningService and the required call-screening role or permissions, where applicable.
+
+Requirements:
+
+- Correct AndroidManifest.xml declarations.
+- Correct service declarations and permission handling.
+- Clear first-run setup wizard.
+- Graceful handling of denied and revoked permissions.
+- Persistent local settings.
+- Correct behavior after app and device restarts.
+- Reliable mode activation and deactivation.
+- No fake call-blocking functions.
+- No unsupported background execution tricks.
+- No unnecessary accessibility permissions.
+- No root access requirement.
+- No bypassing Android security restrictions.
+
+Evaluate Android version compatibility and Samsung One UI behavior.
+
+Investigate differences between call-screening APIs, Do Not Disturb, notification silencing, private numbers, unknown callers, and restricted numbers.
+
+Treat SIM calls and WhatsApp or other VoIP calls as separate technical capabilities. Do not claim WhatsApp filtering unless a supported, legitimate implementation actually exists.
+
+If full automatic call rejection is not possible under the applicable Android restrictions, implement the best reliable alternative and explain the limitation.
+
+8. Design requirements
+
+Create a polished, modern, professional Android interface.
+
+- Material 3 design
+- Light and dark themes
+- English and Marathi
+- Large readable text
+- Large touch targets
+- Simple icons and labels
+- Minimal setup steps
+- Accessible contrast
+- Clear active/inactive states
+- No ads
+- No unnecessary account creation
+- No distracting animations
+
+The home screen should prioritize the three modes: Family Only, Driving Mode, and Normal Mode.
+
+Provide a confirmation dialog before enabling a mode that may reject unknown callers.
+
+9. Data security
+
+This is an app for my father's personal contacts, so privacy is essential.
+
+- Store data locally by default.
+- Do not require an online account.
+- Do not upload contacts, call history, or phone numbers.
+- Do not include tracking SDKs or advertisements.
+- Validate all manually entered numbers.
+- Avoid logging phone numbers in production logs.
+- Keep repository source code free of credentials.
+- Document all permissions and why they are required.
+
+10. Testing and quality assurance
+
+Implement unit tests and suitable Android tests for:
+
+1. Approved family calls.
+2. Unapproved customer calls.
+3. Unknown and private numbers.
+4. Multiple numbers per contact.
+5. Indian phone-number normalization.
+6. Changing call-filter modes.
+7. Emergency override.
+8. Permission denial and revocation.
+9. App restart and device restart.
+10. Marathi and English translations.
+11. Day Off Mode scheduling.
+12. Repeat Caller Protection.
+13. Fallback from rejection to silencing.
+14. Android API compatibility.
+
+Do not claim that calls have been successfully tested on a real device unless they actually have been.
+
+Include a manual test plan using a real Android phone and two test numbers.
+
+11. Project structure and documentation
+
+Use a clear project structure, for example:
+
+- "app/"
+- "app/src/main/java/"
+- "app/src/main/res/values/"
+- "app/src/main/res/values-mr/"
+- "app/src/test/"
+- "app/src/androidTest/"
+- ".github/workflows/"
+- "README.md"
+- "LICENSE"
+- ".gitignore"
+
+Add:
+
+- Complete source code
+- Gradle wrapper and configuration
+- App resources
+- Unit tests
+- CI workflow
+- Setup and troubleshooting documentation
+- Permission explanations
+- Supported Android versions
+- Known limitations
+
+Choose a suitable open-source license and explain its implications. Do not include third-party code without checking its license.
+
+12. Build and release
+
+Configure GitHub Actions to:
+
+- Set up the required JDK and Android SDK.
+- Run Gradle unit tests.
+- Build the debug APK.
+- Upload the APK as a CI artifact when successful.
+- Report failures clearly.
+
+Do not claim the build passes unless the workflow or build actually succeeds.
+
+Provide instructions for installing the debug APK safely.
+
+If a signed release is prepared, explain how signing keys must be generated and kept private. Never commit signing keys or passwords.
+
+13. Execution strategy
+
+Work in these phases:
+
+Phase 1: Assess available GitHub, coding, and build tools. Verify Android call-screening constraints and design the architecture.
+
+Phase 2: Create the new repository and complete project skeleton.
+
+Phase 3: Implement contact selection, local storage, bilingual UI, modes, permissions, and real call-filtering behavior.
+
+Phase 4: Add Day Off Mode, optional repeat-caller protection, emergency exceptions, and privacy controls.
+
+Phase 5: Add tests, documentation, and GitHub Actions.
+
+Phase 6: Build and validate the app, resolve build errors, and publish the working source and build artifacts.
+
+Phase 7: Report exactly what is complete, what has been tested, what remains limited by Android, and how I can install it.
+
+Prioritize a reliable working core over adding features that cannot be tested.
+
+Start by checking the available tools and Android constraints. Then execute the work, using actual GitHub and build tools wherever authorized. Do not stop after giving me a plan.
